@@ -16,6 +16,7 @@
       - [Shallow copy.](#shallow-copy)
       - [Deep copy.](#deep-copy)
     - [Ví dụ](#ví-dụ-1)
+  - [4. Thực hành JS, HTML, CSS làm một trang web todo list gồm các tính năng sau:](#4-thực-hành-js-html-css-làm-một-trang-web-todo-list-gồm-các-tính-năng-sau)
 
 ## 1. Kiểm tra các loại dữ liệu trong JavaScript
 
@@ -283,3 +284,12 @@ console.log(apples); // ['air', { model: 'm1' }, 'macbook2017']
 - Chúng ta thay đổi giá trị `model: 'm1'` của array clone **apples** và array gốc **macbooks** cũng bị thay đổi theo,
   
   bỏi vì **apples** vẫn giữ những giá trị reference là object `{model: "macbook2014"}` của array gốc.
+
+## 4. Thực hành JS, HTML, CSS làm một trang web todo list gồm các tính năng sau:
+- Thêm công việc
+- Đánh dấu hoàn thành
+- Xoá công việc
+
+Trang web mẫu: **[https://todo-eta-amber.vercel.app/](https://todo-eta-amber.vercel.app/)**
+
+DEMO: **[Web54-TungNV/SS01-ES6/todo](https://sptungg.github.io/Web54-TungNV/SS01-ES6/todo)**
