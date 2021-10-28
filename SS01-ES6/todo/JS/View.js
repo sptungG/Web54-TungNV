@@ -1,6 +1,6 @@
 export default class View {
   constructor() {
-    this.app = this.getElement("body");
+    this.app = this.getElement("#app");
 
     this.todoWrapper = this.createElement("div", "todo");
     this.form = this.createElement("form", "todo-form");
