@@ -201,6 +201,7 @@ second();
 Notes: reference type trong javascript tổng thể có 3 loại: Array, function và object
 
 ### Copy object
+
 #### Shallow copy.
 
 - Object.assign()
