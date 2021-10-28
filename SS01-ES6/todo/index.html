@@ -12,7 +12,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script src="./JS/app.js" type="module"></script>
+    <div class="todo">
+      <form class="todo-form" autocomplete="off">
+        <input type="text" name="todo" placeholder="Enter your task" class="todo-input" />
+        <button class="todo-submit" type="submit">Add</button>
+      </form>
+      <div class="todo-list"></div>
+    </div>
+    <script src="./JS/app.js"></script>
   </body>
 </html>
