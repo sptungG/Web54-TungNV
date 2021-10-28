@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
   // Variables declaration
   const form = document.querySelector(".todo-form");
   const todoList = document.querySelector(".todo-list");
+  let status = document.querySelector(".todo-status");
   let todos = JSON.parse(localStorage.getItem("todoList")) || [];
   // console.log("localStorage", localStorage);
 
@@ -33,7 +34,7 @@ window.addEventListener("load", function () {
       id: Date.now(),
       title: todoVal,
       isCompleted: false,
-    }
+    };
     createTodoItem(todoData);
     todos.push(todoData);
     localStorage && localStorage.setItem("todoList", JSON.stringify(todos));
@@ -53,18 +54,23 @@ window.addEventListener("load", function () {
       todos.splice(index, 1);
       localStorage.setItem("todoList", JSON.stringify(todos));
     }
-    if(e.target.matches(".todo-checkbox")) {
+    if (e.target.matches(".todo-checkbox")) {
       const todoId = parseInt(e.target.id);
       const index = todos.findIndex((item) => item.id === todoId);
       const todo = e.target.parentNode;
-      if (!todos[index].isCompleted) {        
+      if (!todos[index].isCompleted) {
         todo.classList.add("done");
         todos[index].isCompleted = true;
         localStorage.setItem("todoList", JSON.stringify(todos));
-      }else{
+      } else {
         todo.classList.remove("done");
         todos[index].isCompleted = false;
         localStorage.setItem("todoList", JSON.stringify(todos));
+      }
+      let completedTodos = todos.filter((todo) => todo.isCompleted);
+      status.innerHTML = `You've completed <b>${completedTodos.length}/${todos.length}</b> task!`;
+      if (completedTodos.length == todos.length) {
+        status.innerHTML = `Congratulation!!! You've completed all <b>${todos.length}</b> tasks!!!`;
       }
     }
   });

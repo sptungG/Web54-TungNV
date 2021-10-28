@@ -3,6 +3,12 @@
   margin: 25px auto;
   max-width: 600px;
 }
+.todo-status{
+  margin-top: 15px;
+}
+.todo-status b{
+  color: #2ec4b6;
+}
 .todo-form {
   width: 100%;
   display: flex;
