@@ -192,7 +192,7 @@ second();
 
 - Mặc dù thời gian chờ xảy ra sau 0 giây, Javascript vẫn thêm WebAPI, chạy setTimeout và đưa log\_"Một" vào CallbackQueue, sẽ đc gọi sau 0 giây.
 - Trong 0s đó, chạy dòng tiếp theo (log\_"Hai") và rời khỏi Callstack.
-- Khi log*"Hai" xong, lúc này Callstack đã trống, log*"Một" đang ở trong CallbackQueue sẽ vào Callstack và chạy, rồi rời khỏi Callstack.
+- Khi log\_"Hai" xong, lúc này Callstack đã trống, log\_"Một" đang ở trong CallbackQueue sẽ vào Callstack và chạy, rồi rời khỏi Callstack.
 - Callstack trở về trạng thái trống nên chương trình đã chạy xong.
 
 ## 3. Deep copy và Shallow copy
