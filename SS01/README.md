@@ -292,4 +292,4 @@ console.log(apples); // ['air', { model: 'm1' }, 'macbook2017']
 
 Trang web mẫu: **[https://todo-eta-amber.vercel.app/](https://todo-eta-amber.vercel.app/)**
 
-DEMO: **[Web54-TungNV/SS01-ES6/todo](https://sptungg.github.io/Web54-TungNV/SS01-ES6/todo)**
+DEMO: **[Web54-TungNV/SS01/todo](https://sptungg.github.io/Web54-TungNV/SS01/todo)**
