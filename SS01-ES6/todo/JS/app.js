@@ -2,7 +2,6 @@ window.addEventListener("load", function () {
   // Variables declaration
   const form = document.querySelector(".todo-form");
   const todoList = document.querySelector(".todo-list");
-  let status = document.querySelector(".todo-status");
   let todos = JSON.parse(localStorage.getItem("todoList")) || [];
   // console.log("localStorage", localStorage);
 
@@ -67,6 +66,7 @@ window.addEventListener("load", function () {
         todos[index].isCompleted = false;
         localStorage.setItem("todoList", JSON.stringify(todos));
       }
+      let status = document.querySelector(".todo-status");
       let completedTodos = todos.filter((todo) => todo.isCompleted);
       status.innerHTML = `You've completed <b>${completedTodos.length}/${todos.length}</b> task!`;
       if (completedTodos.length == todos.length) {
