@@ -41,7 +41,7 @@ async function handleMenu() {
         let newUsername = prompt("=>> Enter username: ").trim();
         let newPassword = prompt("=>> Enter password: ").trim();
         await method.addUser({ username: newUsername, password: newPassword });
-        console.log(`Added Successful`);
+        console.log(`Added Successfully`);
         break;
       }
       case 4: {
@@ -50,14 +50,14 @@ async function handleMenu() {
         let newUsername = prompt("=>> Enter username: ").trim();
         let newPassword = prompt("=>> Enter password: ").trim();
         await method.updateUser(id, newUsername, newPassword);
-        console.log(`Updated Successful`);
+        console.log(`Updated Successfully`);
         break;
       }
       case 5: {
         console.log(`[Delete by ID]`);
         let id = Number(prompt("=>> Enter userID: ").trim());
-        method.deleteUser(id);
-        console.log(`Deleted Successful`);
+        await method.deleteUser(id);
+        console.log(`Deleted Successfully`);
         break;
       }
       case 0:
@@ -66,7 +66,7 @@ async function handleMenu() {
         break;
 
       default:
-        console.log("Invalid Input");
+        console.log("Invalid Input. Try again.");
         break;
     }
   }
