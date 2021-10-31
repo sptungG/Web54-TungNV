@@ -9,6 +9,7 @@
     - [Khái niệm](#khái-niệm)
     - [Ràng buộc của REST](#ràng-buộc-của-rest)
     - [Quy tắc, quy chuẩn thiết kế API](#quy-tắc-quy-chuẩn-thiết-kế-api)
+    - [Một số http status code](#một-số-http-status-code)
   - [3. Express](#3-express)
     - [Khái niệm](#khái-niệm-1)
     - [Tính năng.](#tính-năng)
@@ -221,6 +222,8 @@ API (Application Programming Interface) hay còn được gọi là giao diện 
 
 REST là từ viết tắt của Representational State Transfer. Đó là kiến trúc tiêu chuẩn web và Giao thức HTTP. Hiểu đơn giản thì các ứng dụng RESTful sử dụng các yêu cầu HTTP để thực hiện bốn hoạt động được gọi là CRUD (C: Create, R: Read, U: Update, và D: Delete)
 
+![api](https://topdev.vn/blog/wp-content/uploads/2019/04/restful-api.jpg)
+
 ### Ràng buộc của REST
 
 - **Client-Server**: Hoạt động theo mô hình Client - Server, việc tách biệt này nhằm đơn giản hóa việc thực hiện các thành phần (kiểu chia để trị), giảm sự phức tạp của ngữ nghĩa kết nối, nâng cao hiệu quả của việc điều chỉnh hiệu năng, tăng khả năng mở rộng của máy chủ.
@@ -274,6 +277,18 @@ REST là từ viết tắt của Representational State Transfer. Đó là kiế
    _Ví dụ:_ _GET/user?field=id,name,address_
 
    (Lấy danh sách tất cả các user với các thông tin bao gồm id, name, address)
+
+### Một số http status code
+
+Chuẩn HTTP cung cấp cho ta rất nhiều status code. Chúng ta sẽ không cần biết hết tất cả nhưng ít nhất nên biết đến những status code:
+
+- **200 OK** — Đây là mã HTTP được sử dụng phổ biến nhất để cho thấy rằng hoạt động được thực hiện là thành công.201 CREATED — This can be used when you use POST method to create a new resource.
+- **202 ACCEPTED** — Điều này có thể được sử dụng để xác nhận yêu cầu được gửi đến máy chủ.
+- **400 BAD REQUEST** — Điều này có thể được sử dụng khi xác nhận đầu vào phía khách hàng không thành công.
+- **401 UNAUTHORIZED / 403 FORBIDDEN** — Điều này có thể được sử dụng nếu người dùng hoặc hệ thống không được phép thực hiện một số thao tác nhất định.
+- **404 NOT FOUND** — Điều này có thể được sử dụng nếu bạn đang tìm kiếm một số tài nguyên nhất định và nó không có sẵn trong hệ thống.
+- **500 INTERNAL SERVER ERROR** — Điều này không bao giờ nên được ném một cách rõ ràng nhưng có thể xảy ra nếu hệ thống bị lỗi.
+- **502 BAD GATEWAY** — Điều này có thể được sử dụng nếu máy chủ nhận được phản hồi không hợp lệ từ máy chủ ngược dòng.
 
 ## 3. Express
 
