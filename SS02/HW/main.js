@@ -13,49 +13,65 @@ const addUser = async (user) => {
 };
 
 const readUsers = async () => {
-  const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
-  const users = JSON.parse(stringUsers);
-  return users;
+  try {
+    const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
+    const users = JSON.parse(stringUsers);
+    return users;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const readUser = async (id) => {
-  const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
-  const users = JSON.parse(stringUsers);
-  const index = users.findIndex((user) => user.id === id);
-  return users[index];
+  try {
+    const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
+    const users = JSON.parse(stringUsers);
+    const user = users.find((user) => user.id === id);
+    return user;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const updateUser = async (id, ...dataUpdate) => {
-  const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
-  const users = JSON.parse(stringUsers);
-  const index = users.findIndex((user) => user.id === id);
-  if (index < 0) {
-    return console.log(`[ERROR] Not found user with id: ${id}`);
-  }
-  if (dataUpdate.length == 0) {
-    return console.log(`[ERROR] Invalid Information.`);
-  }
-  const newData = {
-    id: id,
-    username: dataUpdate[0] ?? users[index].username,
-    password: dataUpdate[1] ?? users[index].password,
-  };
+  try {
+    const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
+    const users = JSON.parse(stringUsers);
+    const index = users.findIndex((user) => user.id === id);
+    if (index < 0) {
+      return console.log(`[ERROR] Not found user with id: ${id}`);
+    }
+    if (dataUpdate.length == 0) {
+      return console.log(`[ERROR] Invalid Information.`);
+    }
+    const newData = {
+      id: id,
+      username: dataUpdate[0] ?? users[index].username,
+      password: dataUpdate[1] ?? users[index].password,
+    };
 
-  if (dataUpdate[0]) {
-    users.splice(index, 1, newData);
+    if (dataUpdate[0]) {
+      users.splice(index, 1, newData);
+    }
+    await fs.promises.writeFile("users.json", JSON.stringify(users));
+  } catch (err) {
+    console.log(err);
   }
-  await fs.promises.writeFile("users.json", JSON.stringify(users));
 };
 
 const deleteUser = async (id) => {
-  const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
-  const users = JSON.parse(stringUsers);
-  const index = users.findIndex((user) => user.id === id);
-  if (index < 0) {
-    return console.log(`[ERROR] Not found user with id: ${id}`);
+  try {
+    const stringUsers = await fs.promises.readFile("users.json", { encoding: "utf-8" });
+    const users = JSON.parse(stringUsers);
+    const index = users.findIndex((user) => user.id === id);
+    if (index < 0) {
+      return console.log(`[ERROR] Not found user with id: ${id}`);
+    }
+    users.splice(index, 1);
+    await fs.promises.writeFile("users.json", JSON.stringify(users));
+  } catch (err) {
+    console.log(err);
   }
-  users.splice(index, 1);
-  await fs.promises.writeFile("users.json", JSON.stringify(users));
 };
 
 module.exports = {
