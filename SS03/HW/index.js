@@ -46,7 +46,7 @@ app.delete("/posts/:postId/comments/:id", async (req, res) => {
   });
 });
 
-app.listen(9000, (err) => {
+app.listen(9001, (err) => {
   if (err) {
     return console.log(err);
   }
