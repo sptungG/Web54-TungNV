@@ -1,6 +1,6 @@
 const blogSection = document.querySelector(".blogs-section");
 
-let baseUrl = "http://localhost:9001/posts";
+let baseUrl = "../controller/posts.json";
 
 showAllPosts = () => {
   async function getData() {
@@ -8,8 +8,8 @@ showAllPosts = () => {
     return await response.json();
   }
   getData()
-    .then((result) => {
-      result.data.forEach((post) => {
+    .then((data) => {
+      data.forEach((post) => {
         createPost(post);
       });
     })
@@ -21,11 +21,11 @@ showAllPosts = () => {
 const createPost = (data) => {
   blogSection.innerHTML += `
   <div class="blog-card">
-  <img src="${data.imageUrl}" class="blog-image" alt="">
-  <h1 class="blog-title">${data.title.substring(0, 100) + "..."}</h1>
-  <p class="blog-overview">${data.desc.substring(0, 200) + "..."}</p>
-      <a href="/${data.id}" class="btn dark">read</a>
-      </div>
+    <img src="${data.imageUrl}" class="blog-image" alt="">
+    <h2 class="blog-title">${data.title.substring(0, 50)}</h2>
+    <p class="blog-overview">${data.desc.substring(0, 100) + "..."}</p>
+    <a href="/${data.id}" class="btn dark">read</a>
+  </div>
   `;
 };
 
