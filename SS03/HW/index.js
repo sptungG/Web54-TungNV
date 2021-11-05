@@ -39,7 +39,8 @@ app.put("/posts/:postId/comments/:id", async (req, res) => {
 });
 
 app.delete("/posts/:postId/comments/:id", async (req, res) => {
-  const { postId, id } = req.params;
+  const { postId } = req.params;
+  const { id } = req.params;
   const deleteStatus = await commentCRUD.deleteComment(postId, id);
   res.send({
     data: deleteStatus,

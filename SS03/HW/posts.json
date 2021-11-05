@@ -7,22 +7,16 @@
     "createBy": "tung@gmail.com",
     "comments": [
       {
-        "id": "0",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi quam corporis",
-        "createAt": "5/11/2021",
-        "createBy": "tung@gmail.com"
-      },
-      {
-        "id": "1",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "createAt": "4/11/2021",
-        "createBy": "tungg@gmail.com"
-      },
-      {
         "id": "d3ce71d0-3de5-11ec-beb3-a99ebe7d5f36",
         "createAt": "5/11/2021",
         "createBy": "tung154@gmail.com",
-        "content": "Lorem Lorem Lorem"
+        "content": "Loremmmmmmmmmmmmmmmm"
+      },
+      {
+        "id": "1b1a4850-3df2-11ec-97bb-253946867743",
+        "createAt": "5/11/2021",
+        "createBy": "tung154@gmail.com",
+        "content": "Loremmmmmmmmmmmmmmmm"
       }
     ]
   }
