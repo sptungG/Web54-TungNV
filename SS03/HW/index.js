@@ -1,8 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const postCRUD = require("./post.functions");
 const commentCRUD = require("./comment.functions");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // --------------------- CRUD COMMENT ---------------------
@@ -41,7 +43,7 @@ app.post("/posts/:postId/comments", async (req, res) => {
 app.put("/posts/comments/:commentId", async (req, res) => {
   const { commentId } = req.params;
   const dataUpdate = req.body;
-  const updateComment = await commentCRUD.updateComment( commentId, dataUpdate);
+  const updateComment = await commentCRUD.updateComment(commentId, dataUpdate);
   res.send({
     data: updateComment,
   });

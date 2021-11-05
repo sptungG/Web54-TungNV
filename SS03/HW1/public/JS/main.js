@@ -1,15 +1,21 @@
 const blogSection = document.querySelector(".blogs-section");
 
+let baseUrl = "http://localhost:9001/posts";
+
 showAllPosts = () => {
   async function getData() {
-    let data = await fetch(`../DATA/posts.json`);
-    return await data.json();
+    let response = await fetch(`${baseUrl}`);
+    return await response.json();
   }
-  getData().then((posts) => {
-    posts.forEach((post) => {
-      createPost(post);
+  getData()
+    .then((result) => {
+      result.data.forEach((post) => {
+        createPost(post);
+      });
+    })
+    .catch((err) => {
+      return console.log(err);
     });
-  });
 };
 
 const createPost = (data) => {
