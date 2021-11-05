@@ -4,17 +4,24 @@ const commentCRUD = require("./comment.functions");
 const app = express();
 app.use(express.json());
 
-app.get("/posts/:postId/comments", async (req, res) => {
-  const { postId } = req.params;
-  const allComments = await commentCRUD.getAllComments(postId);
+app.get("/posts/comments", async (req, res) => {
+  const allComments = await commentCRUD.getAllComments();
   res.send({
     data: allComments,
   });
 });
 
-app.get("/posts/:postId/comments/:id", async (req, res) => {
-  const { postId, id } = req.params;
-  const foundComment = await commentCRUD.getComment(postId, id);
+app.get("/posts/:postId/comments", async (req, res) => {
+  const { postId } = req.params;
+  const comments = await commentCRUD.getCommentsByPost(postId);
+  res.send({
+    data: comments,
+  });
+});
+
+app.get("/posts/comments/:commentId", async (req, res) => {
+  const { commentId } = req.params;
+  const foundComment = await commentCRUD.getComment(commentId);
   res.send({
     data: foundComment,
   });
@@ -23,24 +30,24 @@ app.get("/posts/:postId/comments/:id", async (req, res) => {
 app.post("/posts/:postId/comments", async (req, res) => {
   const { postId } = req.params;
   const dataComment = req.body;
-  const newPost = await commentCRUD.createComment(postId, dataComment);
+  const newComment = await commentCRUD.createComment(postId, dataComment);
   res.send({
-    data: newPost,
+    data: newComment,
   });
 });
 
-app.put("/posts/:postId/comments/:id", async (req, res) => {
-  const { postId, id } = req.params;
+app.put("/posts/comments/:commentId", async (req, res) => {
+  const { commentId } = req.params;
   const dataUpdate = req.body;
-  const updatePost = await commentCRUD.updateComment(postId, id, dataUpdate);
+  const updateComment = await commentCRUD.updateComment( commentId, dataUpdate);
   res.send({
-    data: updatePost,
+    data: updateComment,
   });
 });
 
-app.delete("/posts/:postId/comments/:id", async (req, res) => {
-  const { postId, id } = req.params;
-  const deleteStatus = await commentCRUD.deleteComment(postId, id);
+app.delete("/posts/comments/:commentId", async (req, res) => {
+  const { commentId } = req.params;
+  const deleteStatus = await commentCRUD.deleteComment(commentId);
   res.send({
     data: deleteStatus,
   });

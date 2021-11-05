@@ -1,25 +1,41 @@
 const fs = require("fs");
 const uuid = require("uuid");
 
-const getAllComments = async (postId) => {
+const getAllComments = async () => {
   try {
-    const jsonPosts = await fs.promises.readFile("posts.json", "utf-8");
-    const posts = JSON.parse(jsonPosts);
-    const foundPost = posts.find((post) => post.id === postId);
-    return foundPost.comments;
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
+    return comments;
   } catch (err) {
     console.log(err);
     return [];
   }
 };
 
-const getComment = async (postId, commentId) => {
+const getCommentsByPost = async (postId) => {
   try {
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
+    
     const jsonPosts = await fs.promises.readFile("posts.json", "utf-8");
     const posts = JSON.parse(jsonPosts);
-    let foundPost = posts.find((post) => post.id === postId);
-    let foundComment = foundPost.comments.find((comment) => comment.id === commentId);
-    if (!foundPost || !foundComment) return null;
+    const foundPost = posts.find((post) => post.id === postId);
+    if (!foundPost) return [];
+    
+    const foundComments = comments.filter((comment) => comment.postId === postId);
+    return foundComments;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+const getComment = async (commentId) => {
+  try {
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
+    let foundComment = comments.find((comment) => comment.id === commentId);
+    if (!foundComment) return null;
     return foundComment;
   } catch (err) {
     console.log(err);
@@ -29,18 +45,23 @@ const getComment = async (postId, commentId) => {
 
 const createComment = async (postId, dataComment) => {
   try {
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
+
     const jsonPosts = await fs.promises.readFile("posts.json", "utf-8");
     const posts = JSON.parse(jsonPosts);
+    const foundPost = posts.find((post) => post.id === postId);
+    if (!foundPost) return null;
 
     const newComment = {
       id: uuid.v1(),
+      postId: postId,
       createAt: new Date().toLocaleDateString("vi-VI"),
       ...dataComment,
     };
 
-    const foundPost = posts.find((post) => post.id === postId);
-    foundPost.comments.push(newComment);
-    await fs.promises.writeFile("posts.json", JSON.stringify(posts));
+    comments.push(newComment);
+    await fs.promises.writeFile("comments.json", JSON.stringify(comments));
     return newComment;
   } catch (err) {
     console.log(err);
@@ -48,42 +69,33 @@ const createComment = async (postId, dataComment) => {
   }
 };
 
-const updateComment = async (postId, commentId, newComment) => {
+const updateComment = async (commentId, newComment) => {
   try {
-    const jsonPosts = await fs.promises.readFile("posts.json", "utf-8");
-    const posts = JSON.parse(jsonPosts);
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
 
-    let foundPost = posts.find((post) => post.id === postId);
-    let foundIndex = foundPost.comments.findIndex((comment) => comment.id === commentId);
-    if (!foundPost || foundIndex < 0) return null;
+    const foundIndex = comments.findIndex((comment) => comment.id === commentId);
+    if (foundIndex < 0) return null;
 
-    let updateComment = {
-      ...foundPost.comments[foundIndex],
+    comments[foundIndex] = {
+      ...comments[foundIndex],
       ...newComment,
     };
 
-    foundPost.comments.splice(foundIndex, 1, updateComment);
-
-    await fs.promises.writeFile("posts.json", JSON.stringify(posts));
-    return updateComment;
+    await fs.promises.writeFile("comments.json", JSON.stringify(comments));
+    return comments[foundIndex];
   } catch (err) {
     console.log(err);
     return null;
   }
 };
 
-const deleteComment = async (postId, commentId) => {
+const deleteComment = async (commentId) => {
   try {
-    const jsonPosts = await fs.promises.readFile("posts.json", "utf-8");
-    const posts = JSON.parse(jsonPosts);
-
-    let foundPost = posts.find((post) => post.id === postId);
-    let foundIndex = foundPost.comments.findIndex((comment) => comment.id === commentId);
-    if (!foundPost || foundIndex < 0) return null;
-
-    foundPost.comments.splice(foundIndex, 1);
-
-    await fs.promises.writeFile("posts.json", JSON.stringify(posts));
+    const jsonComments = await fs.promises.readFile("comments.json", "utf-8");
+    const comments = JSON.parse(jsonComments);
+    const newComments = comments.filter((comment) => comment.id !== commentId);
+    await fs.promises.writeFile("comments.json", JSON.stringify(newComments));
     return true;
   } catch (err) {
     console.log(err);
@@ -92,6 +104,7 @@ const deleteComment = async (postId, commentId) => {
 };
 module.exports = {
   getAllComments,
+  getCommentsByPost,
   getComment,
   createComment,
   updateComment,

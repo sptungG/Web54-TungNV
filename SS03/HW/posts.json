@@ -4,20 +4,6 @@
     "imageUrl": "https://source.unsplash.com/random/?vietnam",
     "title": "Vietnam",
     "desc": "Vietnam",
-    "createBy": "tung@gmail.com",
-    "comments": [
-      {
-        "id": "d3ce71d0-3de5-11ec-beb3-a99ebe7d5f36",
-        "createAt": "5/11/2021",
-        "createBy": "tung154@gmail.com",
-        "content": "Loremmmmmmmmmmmmmmmm"
-      },
-      {
-        "id": "1b1a4850-3df2-11ec-97bb-253946867743",
-        "createAt": "5/11/2021",
-        "createBy": "tung154@gmail.com",
-        "content": "Loremmmmmmmmmmmmmmmm"
-      }
-    ]
+    "createBy": "tung@gmail.com"
   }
 ]
