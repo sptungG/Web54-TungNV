@@ -1,0 +1,47 @@
+.blog-read{
+  min-height: 100vh;
+}
+.blog-banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background: #e7e7e7;
+  background-size: cover;
+  background-position: center;
+}
+.blog {
+  width: 70vw;
+  min-width: 400px;
+  height: auto;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.blog .blog-title {
+  font-size: 24px;
+  padding: 0 10px;
+}
+.blog-published {
+  margin: 20px 0 60px;
+  padding: 0 10px;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+.blog-published span {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.blog .blog-desc {
+  word-break: break-word;
+  padding: 0 10px;
+  margin: 30px 0;
+  color: #2d2d2d;
+  font-size: 18px;
+}
+
+#edit-blog-btn {
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+}

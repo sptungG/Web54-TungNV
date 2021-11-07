@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 html {
   box-sizing: border-box;
 }
@@ -15,22 +16,27 @@ textarea,
 select,
 button {
   outline: none;
+  border: 0;
 }
+label,
 input {
   line-height: normal;
+  font-family: "Poppins", sans-serif;
 }
 label,
 button {
   cursor: pointer;
+  border: none;
 }
+
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 img {
   display: block;
   max-width: 100%;
 }
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 body {
   width: 100%;
   position: relative;

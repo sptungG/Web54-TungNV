@@ -1,32 +1,29 @@
-const blogSection = document.querySelector(".blogs-section");
+const blogsSection = document.querySelector(".blogs-section");
 
-let baseUrl = "../controller/posts.json";
+async function getData(baseUrl) {
+  let response = await axios.get(`${baseUrl}`);
+  return response.data;
+}
 
-showAllPosts = () => {
-  async function getData() {
-    let response = await fetch(`${baseUrl}`);
-    return await response.json();
-  }
-  getData()
+function showAllBlogs() {
+  blogsSection.innerHTML = "";
+  getData("http://localhost:9000/api/posts")
     .then((data) => {
       data.forEach((post) => {
-        createPost(post);
+        blogsSection.innerHTML += `
+        <div class="blog-card">
+          <img src="${post.imageUrl}" class="blog-image" alt="">
+          <h2 class="blog-title">${post.title.substring(0, 50)}</h2>
+          <p class="blog-overview">${post.desc.substring(0, 100) + "..."}</p>
+          <div class="blog-controller">
+          <a href="/${post.id}" class="btn dark">read</a>
+          </div> 
+        </div>
+        `;
       });
     })
     .catch((err) => {
-      return console.log(err);
+      console.log(err);
     });
-};
-
-const createPost = (data) => {
-  blogSection.innerHTML += `
-  <div class="blog-card">
-    <img src="${data.imageUrl}" class="blog-image" alt="">
-    <h2 class="blog-title">${data.title.substring(0, 50)}</h2>
-    <p class="blog-overview">${data.desc.substring(0, 100) + "..."}</p>
-    <a href="/${data.id}" class="btn dark">read</a>
-  </div>
-  `;
-};
-
-showAllPosts();
+}
+showAllBlogs();

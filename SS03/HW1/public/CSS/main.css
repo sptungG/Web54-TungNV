@@ -19,6 +19,7 @@
 
 .links-container {
   display: flex;
+  align-items: center;
   list-style: none;
 }
 
@@ -28,15 +29,6 @@
   text-decoration: none;
   text-transform: capitalize;
   color: #000;
-}
-
-.btn {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.7);
-  color: #000;
-  text-decoration: none;
-  text-transform: capitalize;
 }
 
 .blogs-section {
@@ -65,9 +57,48 @@
   margin: 10px 0 20px;
   line-height: 30px;
 }
-
-.btn.dark {
+.blog-controller {
   margin-top: auto;
+}
+
+.heading {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 60px;
+  text-align: center;
+  position: relative;
+  margin: 100px 0 20px;
+}
+.sub-heading{
+  padding: 0 5vw;
+  color: #2d2d2d;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.btn.dark {
   background: #1b1b1b;
   color: #fff;
 }
+.btn-add {
+  margin-left: 20px;
+}
+
+.btn.grey {
+  background: #c5c5c5;
+  color: #000;
+  margin: 0 10px;
+}
+
+.btn.danger {
+  background: #f00;
+  color: #fff;
+}
+
