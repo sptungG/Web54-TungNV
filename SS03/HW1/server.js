@@ -11,6 +11,11 @@ app.use(cors());
 app.use(express.static(staticPath));
 app.use(express.json());
 
+// 404 route
+app.get("/404", (req, res) => {
+  res.sendFile(path.join(staticPath, "404.html"));
+});
+
 //home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(staticPath, "index.html"));
@@ -27,7 +32,6 @@ app.get("/add", (req, res) => {
 app.get("/:blog", (req, res) => {
   res.sendFile(path.join(staticPath, "blog.html"));
 });
-
 
 // --------------------- CRUD POST ---------------------
 app.get("/api/posts", async (req, res) => {
@@ -58,11 +62,6 @@ app.delete("/api/posts/:id", async (req, res) => {
   const { id } = req.params;
   const deleteStatus = await postCRUD.deletePost(id);
   res.send(deleteStatus);
-});
-
-// 404 route
-app.get("/404", (req, res) => {
-  res.sendFile(path.join(staticPath, "404.html"));
 });
 
 app.use((req, res) => {

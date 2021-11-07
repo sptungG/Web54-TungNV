@@ -4,22 +4,10 @@ const blogImageUrl = document.querySelector("#banner-image");
 const descField = document.querySelector(".desc");
 const publishBtn = document.querySelector(".publish-btn");
 
-async function getData(baseUrl) {
-  let response = await axios.get(`${baseUrl}`);
-  return response.data;
-}
-
-let blogID = location.pathname.split("/");
-console.log(blogID);
-
-if (blogID[1] == "add") {
-  publishBtn.addEventListener("click", () => {
-    addBlog();
-    alert("Added successfully!");
-  });
-} else {
-  location.replace("/");
-}
+publishBtn.addEventListener("click", () => {
+  addBlog();
+  alert("Added successfully!");
+});
 
 function addBlog() {
   axios
