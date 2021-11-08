@@ -30,7 +30,7 @@ const CommentSchema = new mongoose.Schema(
       required: true,
     },
     createdBy: String,
-    postId: mongoose.Types.ObjectId
+    postId: mongoose.Types.ObjectId,
   },
   {
     timestamps: true,
@@ -41,11 +41,12 @@ const PostModel = mongoose.model("Post", PostSchema);
 
 async function main() {
   await mongoose.connect("mongodb://localhost:27017/web54");
-  console.log("MongoDB");
+  console.log("MongoDB connected!");
+
   const app = express();
   app.use(express.json());
 
-  app.get("api/posts", async (req, res) => {
+  app.get("/api/posts", async (req, res) => {
     try {
       const posts = await PostModel.find();
       // => array
@@ -62,7 +63,7 @@ async function main() {
     }
   });
 
-  app.get("api/posts/:postId", async (req, res) => {
+  app.get("/api/posts/:postId", async (req, res) => {
     try {
       const { postId } = req.params;
       const foundPost = await PostModel.findById(postId);
@@ -84,7 +85,7 @@ async function main() {
     }
   });
 
-  app.post("api/posts/", async (req, res) => {
+  app.post("/api/posts/", async (req, res) => {
     try {
       const newPostData = req.body;
       const newPost = await PostModel.create(newPostData);
@@ -102,7 +103,7 @@ async function main() {
     }
   });
 
-  app.put("api/posts/:postId", async (req, res) => {
+  app.put("/api/posts/:postId", async (req, res) => {
     try {
       const { postId } = req.params;
       const updatePostData = req.body;
@@ -124,12 +125,12 @@ async function main() {
   });
 
   // HW
-  app.put("api/posts/:postId/like", async (req, res) => {
+  app.put("/api/posts/:postId/like", async (req, res) => {
     // gửi lên là like bài viết đó
     // $inc: tự động tăng?
   });
 
-  app.delete("api/posts/:postId", async (req, res) => {
+  app.delete("/api/posts/:postId", async (req, res) => {
     try {
       const { postId } = req.params;
       const deletePost = await PostModel.findByIdAndDelete(postId);
