@@ -19,7 +19,7 @@ function addBlog() {
       publishedAt: new Date().toLocaleDateString("vi-VI"),
     })
     .then(() => {
-      location.reload();
+      location.replace("/");
     })
     .catch((error) => {
       console.log("Error adding the blog");
