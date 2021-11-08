@@ -1,2 +1,0 @@
-- Hoàn thiện API like bài post, xem comments theo postId
-- Hoàn thiện các API quản lý comments

@@ -2,11 +2,7 @@
 
 Web54-TungNV
 
-## Documentation
-
-**[docs.mongodb.com](https://docs.mongodb.com/manual/core/document/)**
-
-**[mongoosejs.com/docs](https://mongoosejs.com/docs/documents.html)**
+## Stack
 
 <p align="left">
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=ebebeb" height="24" />&nbsp
