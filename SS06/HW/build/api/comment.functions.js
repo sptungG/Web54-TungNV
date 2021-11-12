@@ -25,24 +25,6 @@ const getAllComments = async () => {
   }
 };
 
-const getCommentsByPost = async (postId) => {
-  try {
-    const foundComments = await CommentModel.find({ postId: postId });
-
-    return {
-      success: 1,
-      data: foundComments,
-    };
-  } catch (err) {
-    return {
-      status: 400,
-      success: 0,
-      data: [],
-      message: err.message || "Something went wrong",
-    };
-  }
-};
-
 const getComment = async (commentId) => {
   try {
     const foundComment = await CommentModel.findById(commentId);
@@ -63,12 +45,11 @@ const getComment = async (commentId) => {
 
 const createComment = async (postId, dataComment) => {
   try {
-    await PostModel.findById(postId);
-    const newComment = {
-      postId: postId,
-      ...dataComment,
-    };
-    await CommentModel.create(newComment);
+    const existedPost = await PostModel.findById(postId);
+    if (!existedPost) {
+      throw new Error("Post not found.");
+    }
+    const newComment = await CommentModel.create({ postId, ...dataComment });
     return {
       success: 1,
       data: newComment,
@@ -118,7 +99,6 @@ const deleteComment = async (commentId) => {
 };
 module.exports = {
   getAllComments,
-  getCommentsByPost,
   getComment,
   createComment,
   updateComment,

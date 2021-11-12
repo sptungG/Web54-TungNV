@@ -1,7 +1,9 @@
 const PostModel = require("./post.model");
+const CommentModel = require("./comment.model");
 
 // getAllPosts,
 // getPost,
+// getCommentsByPost,
 // createPost,
 // updatePost,
 // likeCount,
@@ -97,6 +99,24 @@ const likeCount = async (postId) => {
   }
 };
 
+const getCommentsByPost = async (postId) => {
+  try {
+    const foundComments = await CommentModel.find({ postId });
+
+    return {
+      success: 1,
+      data: foundComments,
+    };
+  } catch (err) {
+    return {
+      status: 400,
+      success: 0,
+      data: [],
+      message: err.message || "Something went wrong",
+    };
+  }
+};
+
 const deletePost = async (postId) => {
   try {
     const foundPost = await PostModel.findByIdAndRemove(postId);
@@ -115,6 +135,7 @@ const deletePost = async (postId) => {
 module.exports = {
   getAllPosts,
   getPost,
+  getCommentsByPost,
   createPost,
   updatePost,
   likeCount,
