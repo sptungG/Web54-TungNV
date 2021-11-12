@@ -2,7 +2,6 @@ const CommentModel = require("./comment.model");
 const PostModel = require("./post.model");
 
 // getAllComments,
-// getCommentsByPost,
 // getComment,
 // createComment,
 // updateComment,
