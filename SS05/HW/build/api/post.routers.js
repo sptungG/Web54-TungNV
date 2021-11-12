@@ -14,6 +14,12 @@ router.get("/:postId", async (req, res) => {
   res.send(foundPost);
 });
 
+router.get("/:postId/comments", async (req, res) => {
+  const { postId } = req.params;
+  const comments = await postCRUD.getCommentsByPost(postId);
+  res.send(comments);
+});
+
 router.post("/", async (req, res) => {
   const post = req.body;
   const newPost = await postCRUD.createPost(post);

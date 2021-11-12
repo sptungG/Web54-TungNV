@@ -9,12 +9,6 @@ router.get("/", async (req, res) => {
   res.send(allComments);
 });
 
-router.get("/:postId", async (req, res) => {
-  const { postId } = req.params;
-  const comments = await commentCRUD.getCommentsByPost(postId);
-  res.send(comments);
-});
-
 router.get("/:commentId", async (req, res) => {
   const { commentId } = req.params;
   const foundComment = await commentCRUD.getComment(commentId);
