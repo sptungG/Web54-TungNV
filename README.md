@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-## SS06_
-=======
-## SS05_MongoDB(3) 
->>>>>>> SS05
+## SS05_MongoDB(4) 
 
 Web54-TungNV
 
