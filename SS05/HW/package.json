@@ -1,0 +1,21 @@
+{
+  "name": "hw",
+  "version": "1.0.0",
+  "description": "- Hoàn thiện API like bài post, xem comments theo postId\r - Hoàn thiện các API quản lý comments",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon build/server",
+    "start": "node build/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
