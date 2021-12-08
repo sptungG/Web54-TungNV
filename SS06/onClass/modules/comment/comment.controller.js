@@ -1,20 +1,24 @@
-const CommentModel = require("./comment");
+// Xử lý nghiệp vụ
+const CommentModel = require('./comment');
 
 const getAllComments = async (req, res) => {
   try {
-    const posts = await CommentModel.find();
-    // => array
+    const comments = await CommentModel.find();
     res.send({
       success: 1,
-      data: posts,
-    });
-  } catch (error) {
-    res.status(400).send({
-      success: 0,
-      data: null,
-      message: err.message || "Something went wrong",
-    });
+      data: comments
+    })
+  } catch (err) {
+    res
+      .status(400)
+      .send({
+        success: 0,
+        data: null,
+        message: err.message || 'Something went wrong'
+      })
   }
-};
+}
 
-module.exports = { getAllComments };
+module.exports = {
+  getAllComments
+}
