@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/form.css" />
+  </head>
+  <body>
+    <nav class="navbar"></nav>
+
+    <section class="blog-add">
+      <!-- update blog -->
+      <h1 class="heading">Write a Blog</h1>
+
+      <div class="blog">
+        <div class="text-field">
+          <label for="banner-image">Banner Image</label>
+          <input autocomplete="off" type="text" id="banner-image" placeholder="Blog Banner Link..." />
+        </div>
+        <textarea type="text" class="title" placeholder="Blog title..."></textarea>
+        <textarea type="text" class="desc" placeholder="Start writing here..."></textarea>
+      </div>
+
+      <div class="blog-options">
+        <button class="btn dark publish-btn">Publish</button>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="JS/nav.js"></script>
+    <script src="JS/add.js"></script>
+  </body>
+</html>
